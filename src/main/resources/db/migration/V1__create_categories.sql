@@ -1,0 +1,5 @@
+CREATE TABLE categorias (
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE
+);
