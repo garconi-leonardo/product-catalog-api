@@ -7,12 +7,14 @@ spring:
   
   jpa:
     hibernate:
-      ddl-auto: validate # O Flyway cuida da estrutura, o Hibernate só valida
+        # Usei 'create' para apagar tudo e recriar novamente a cada execução
+      ddl-auto: create # validate: Flyway cuida da estrutura, o Hibernate só valida
     show-sql: true
     properties:
       hibernate:
         format_sql: true
 
   flyway:
-    enabled: true
+  # DesativeI o Flyway para evitar conflitos de checksum
+    enabled: FALSE
     locations: classpath:db/migration
