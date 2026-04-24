@@ -11,8 +11,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoriaEntity {
-    @Id
+   
+	@Id
     private UUID id;
     private String nome;
     private boolean ativo;
+    
 }

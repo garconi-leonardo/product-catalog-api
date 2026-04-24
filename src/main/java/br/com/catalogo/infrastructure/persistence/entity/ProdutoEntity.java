@@ -12,7 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProdutoEntity {
-    @Id
+    
+	@Id
     private UUID id;
     
     private String nome;
@@ -24,12 +25,12 @@ public class ProdutoEntity {
     @Column(name = "preco_moeda")
     private String precoMoeda;
     
-    private String sku;
+    private String unidadeManutencaoEstoque;
     
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private CategoriaEntity categoria;
     
-    private UUID marcaId; // Simplificado para este exemplo
+    private UUID marcaId;
     private boolean ativo;
 }
