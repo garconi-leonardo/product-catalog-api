@@ -53,7 +53,7 @@ Serviços iniciados:
 ## 📈 Roadmap de Aprendizado
 - [x] Configuração inicial e estrutura de pastas.
 - [x] Modelagem do Domínio e Value Objects.
-- [ ] Implementação da Persistência (JPA/Adapter).
-- [ ] Implementação dos Casos de Uso (Use Cases).
-- [ ] Integração com RabbitMQ (Publicação de Eventos).
+- [x] Implementação da Persistência (JPA/Adapter).
+- [x] Implementação dos Casos de Uso (Use Cases).
+- [x] Integração com RabbitMQ (Publicação de Eventos).
 - [ ] Exposição de API REST e Documentação.
