@@ -32,13 +32,67 @@ public class Produto {
         this.preco = novoPreco;
     }
 
-    // Getters e Setters
-    public UUID getId() { return id; }
-    public String getNome() { return nome; }
-    public String getDescricao() { return descricao; }
-    public Preco getPreco() { return preco; }
-    public UnidadeManutencaoEstoque getUnidadeManutencaoEstoque() { return unidadeManutencaoEstoque; }
-    public Categoria getCategoria() { return categoria; }
-    public Marca getMarca() { return marca; }
-    public boolean isAtivo() { return ativo; }
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Preco getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Preco preco) {
+		this.preco = preco;
+	}
+
+	public UnidadeManutencaoEstoque getUnidadeManutencaoEstoque() {
+		return unidadeManutencaoEstoque;
+	}
+
+	public void setUnidadeManutencaoEstoque(UnidadeManutencaoEstoque unidadeManutencaoEstoque) {
+		this.unidadeManutencaoEstoque = unidadeManutencaoEstoque;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}    
 }
