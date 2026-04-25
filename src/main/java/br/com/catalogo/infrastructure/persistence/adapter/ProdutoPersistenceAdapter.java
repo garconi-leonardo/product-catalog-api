@@ -5,6 +5,9 @@ import br.com.catalogo.domain.repository.ProdutoRepository;
 import br.com.catalogo.infrastructure.persistence.entity.ProdutoEntity;
 import br.com.catalogo.infrastructure.persistence.mapper.ProdutoPersistenceMapper;
 import br.com.catalogo.infrastructure.persistence.repository.JpaProdutoRepository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -31,6 +34,14 @@ public class ProdutoPersistenceAdapter implements ProdutoRepository {
     @Override
     public Optional<Produto> buscarPorId(UUID id) {
         return jpaRepository.findById(id)
+                .map(mapper::paraDominio);
+    }
+    
+    @Override
+    public Page<Produto> listarTodos(Pageable pageable) {
+        //Busca a página de entidades do banco
+        return jpaRepository.findAll(pageable)
+                //Converte cada ProdutoEntity para Produto usando o mapper
                 .map(mapper::paraDominio);
     }
 

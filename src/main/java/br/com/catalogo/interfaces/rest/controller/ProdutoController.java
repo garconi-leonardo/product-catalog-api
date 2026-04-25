@@ -6,10 +6,14 @@ import br.com.catalogo.application.usecase.AtualizarPrecoProdutoUseCase;
 import br.com.catalogo.application.usecase.BuscarProdutoPorIdUseCase;
 import br.com.catalogo.application.usecase.CriarProdutoUseCase;
 import br.com.catalogo.application.usecase.InativarProdutoUseCase;
+import br.com.catalogo.application.usecase.ListarProdutosUseCase;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,16 +29,20 @@ public class ProdutoController {
     private final AtualizarPrecoProdutoUseCase atualizarPrecoProdutoUseCase;
     
     private final InativarProdutoUseCase inativarProdutoUseCase;
+    
+    private final ListarProdutosUseCase listarProdutosUseCase;
 
 
     public ProdutoController(CriarProdutoUseCase criarProdutoUseCase, 
     	   BuscarProdutoPorIdUseCase buscarProdutoPorIdUseCase,
     	   AtualizarPrecoProdutoUseCase atualizarPrecoProdutoUseCase,
-    	   InativarProdutoUseCase inativarProdutoUseCase) {
+    	   InativarProdutoUseCase inativarProdutoUseCase,
+    	   ListarProdutosUseCase listarProdutosUseCase) {
 			this.criarProdutoUseCase = criarProdutoUseCase;
 			this.buscarProdutoPorIdUseCase = buscarProdutoPorIdUseCase;
 			this.atualizarPrecoProdutoUseCase = atualizarPrecoProdutoUseCase;
-			this.inativarProdutoUseCase = inativarProdutoUseCase;			
+			this.inativarProdutoUseCase = inativarProdutoUseCase;
+			this.listarProdutosUseCase = listarProdutosUseCase;
     }
 
     @PostMapping
@@ -48,6 +56,12 @@ public class ProdutoController {
     public ResponseEntity<ProdutoResponse> buscarPorId(@PathVariable UUID id) {
         ProdutoResponse response = buscarProdutoPorIdUseCase.executar(id);
         return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping
+    public ResponseEntity<Page<ProdutoResponse>> listar(
+            @PageableDefault(size = 10, sort = "nome") Pageable pageable) {
+        return ResponseEntity.ok(listarProdutosUseCase.executar(pageable));
     }
     
     @PatchMapping("/{id}/preco")

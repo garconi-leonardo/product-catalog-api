@@ -13,8 +13,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+     # Configuração do Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cache:
+    type: redis     
 
   flyway:
-  # DesativeI o Flyway para evitar conflitos de checksum
+  # Desativei o Flyway para evitar conflitos de checksum
     enabled: FALSE
     locations: classpath:db/migration
